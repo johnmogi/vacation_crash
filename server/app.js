@@ -1,7 +1,7 @@
 const express = require("express");
 const expressSession = require("express-session");
 const authController = require("./controllers/auth-ctrl");
-const consController = require("./con");
+const consController = require("./setup");
 
 const cors = require("cors");
 const vacsController = require("./controllers/vac-ctrl");
