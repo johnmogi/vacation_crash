@@ -9,7 +9,10 @@ router.post("/login", async (request, response) => {
 
   try {
     const result = await dal.executeAsync(sql);
-    const res = JSON.stringify(result);
+    const res = response.json(result);
+
+    response.cookie(res);
+    // const res = JSON.stringify(result);
     console.log(res, res.length);
     if (res.length != 2) {
       request.session.loggedin = true;

@@ -2,16 +2,19 @@ const express = require("express");
 const expressSession = require("express-session");
 const authController = require("./controllers/auth-ctrl");
 const consController = require("./setup");
+var cookieParser = require("cookie-parser");
+
+const server = express();
+server.use(cookieParser()); // Support Cookies
 
 const cors = require("cors");
 const vacsController = require("./controllers/vac-ctrl");
 
-const http = require("http");
-const socketIo = require("socket.io");
-const axios = require("axios");
+// const http = require("http");
+// const socketIo = require("socket.io");
+// const axios = require("axios");
 
 const port = process.env.PORT || 3004;
-const server = express();
 server.use(
   expressSession({
     name: "authenticationCookie",
