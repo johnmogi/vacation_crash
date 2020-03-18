@@ -17,7 +17,7 @@ export class Register extends Component<any, SignState> {
     };
   }
   public componentDidMount(): void {
-    fetch("http://localhost:3003/api/auth/users")
+    fetch("http://localhost:3004/api/auth/users")
       .then(response => response.json())
       .then(users => this.setState({ users }))
       .catch(err => alert(err.message));
@@ -64,7 +64,7 @@ export class Register extends Component<any, SignState> {
       },
       body: JSON.stringify(this.state.newUser)
     };
-    fetch("http://localhost:3003/api/auth/register", options)
+    fetch("http://localhost:3004/api/auth/register", options)
       .then(response => response.json())
       .then(user => console.log("User has been added." + JSON.stringify(user)))
       .catch(err => alert(err.message));
@@ -106,14 +106,11 @@ export class Register extends Component<any, SignState> {
           placeholder="Set Desired Password"
         />
         <br /> <br />
-        <Button size="small" onClick={this.addUserForm}>
+        <button className="btn btn-primary" onClick={this.addUserForm}>
           Sign me up, Scottie!
-        </Button>
+        </button>
         {/* <button type="button">Sign me up, Scottie!</button> */}
-        <div className="admin">
-          <h5>admin</h5>
-          there are {this.state.users.length} user
-        </div>
+        <div className="admin">there are {this.state.users.length} user</div>
       </div>
     );
   }

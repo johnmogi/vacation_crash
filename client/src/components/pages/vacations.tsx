@@ -23,7 +23,7 @@ export class Vacations extends Component<any, vacationState> {
     const vacationId = this.props.match.params.vacId;
     this.setState({ vacId: vacationId });
     // fetch("http://localhost:3003/api/vacations/" + vacationId)
-    fetch("http://localhost:3003/api/vacations/")
+    fetch("http://localhost:3004/api/vacations/")
       // fetch(`http://localhost:` + `${port}` + `/api/vacations/`)
       .then(res => res.json())
       .then(vacs => this.setState({ vacs }))

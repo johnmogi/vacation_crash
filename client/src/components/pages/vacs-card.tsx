@@ -4,6 +4,11 @@ import "./vacs-cards.css";
 export const VacCard = (props: any) => {
   return (
     <div className="" key={props.vacationID}>
+      <img
+        className="card-img-top"
+        src={`/assets/images/${props.picFileName}`}
+        alt={props.description}
+      />
       <ul className="card-body">
         <Link to={`/vacations/${props.vacationID}`}>
           <div className="card-header">{props.vacationName}</div>

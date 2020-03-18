@@ -9,6 +9,7 @@ import { vacPage } from "../pages/one-vacation";
 
 // import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { AdminPage } from "../pages/auth/admin";
 
 // import Paper from "@material-ui/core/Paper";
 
@@ -26,6 +27,7 @@ export class Main extends Component {
                 <Route path="/" component={Home} exact />
                 <Route path="/vacations" component={Vacations} exact />
                 <Route path="/vacations/:id" component={vacPage} exact />
+                <Route path="/admin/:id" component={AdminPage} exact />
                 <Route path="" component={NotFound} exact />
               </Switch>
             </Grid>

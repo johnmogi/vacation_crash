@@ -3,10 +3,10 @@ import { Component, SyntheticEvent } from "react";
 import { Redirect } from "react-router-dom";
 
 interface LoginState {
-  toDashboard: boolean,
+  toDashboard: boolean;
   user: {
-    "userName": String;
-    "password": String;
+    userName: String;
+    password: String;
   };
 }
 
@@ -16,8 +16,8 @@ export class SignIn extends Component<any, LoginState> {
     this.state = {
       toDashboard: false,
       user: {
-        "userName": "",
-        "password": ""
+        userName: "",
+        password: ""
       }
     };
   }
@@ -26,7 +26,7 @@ export class SignIn extends Component<any, LoginState> {
     const user = { ...this.state.user };
     user.userName = userName;
 
-    console.log(user)
+    console.log(user);
     this.setState({ user });
   };
   private setUserPassword = (args: SyntheticEvent) => {
@@ -41,25 +41,26 @@ export class SignIn extends Component<any, LoginState> {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // What type we are sending (MIME Types)
-        "Accept": "application/json" // What type we are expecting to get back (MIME Types)
+        Accept: "application/json" // What type we are expecting to get back (MIME Types)
       },
       body: JSON.stringify(this.state.user)
     };
 
-    fetch("http://localhost:3003/api/auth/login", options)
-    .then(async response => {
-      if (!response.ok)
-          throw new Error(await response.text());
-      return response;
-  })
-      .then(response => response.json()
-      .then(() => this.setState(() => ({
-        toDashboard: true
-      })))
-    
-     
-      // .then(user => {
-      //   this.props.history.push("/vacations"); // Redirect to "/products" route.
+    fetch("http://localhost:3004/api/auth/login", options)
+      .then(async response => {
+        if (!response.ok) throw new Error(await response.text());
+        return response;
+      })
+      .then(
+        response =>
+          response.json().then(() =>
+            this.setState(() => ({
+              toDashboard: true
+            }))
+          )
+
+        // .then(user => {
+        //   this.props.history.push("/vacations"); // Redirect to "/products" route.
       )
       .catch(err => console.log(err.message));
   };
@@ -87,7 +88,7 @@ export class SignIn extends Component<any, LoginState> {
 
   render() {
     if (this.state.toDashboard === true) {
-      return <Redirect to='/vacations' />
+      return <Redirect to="/vacations" />;
     }
     return (
       <div className="signin">

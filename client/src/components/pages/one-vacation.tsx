@@ -15,7 +15,7 @@ export class vacPage extends Component<any, countryState> {
   }
   componentDidMount = () => {
     const id = +this.props.match.params.id;
-    fetch("http://localhost:3003/api/vacations/" + id)
+    fetch("http://localhost:3004/api/vacations/" + id)
       .then(res => res.json())
       .then(vac => this.setState({ vac }))
       .catch(err => alert(err.message));
@@ -30,14 +30,20 @@ export class vacPage extends Component<any, countryState> {
               <p className="card-title mx-auto">{g.vacationName}</p>
             </div>
             {g.description}
-            <ul>
-              <li>{g.description}</li>
-              <li>{g.destination}</li>
-              <li>{g.picFileName}</li>
-              <li>{g.startDate}</li>
-              {/* <li><{g.endDate}</li> */}
-              <li>{g.price}</li>
-            </ul>
+            <img
+              className="card-img-top"
+              src={`/assets/images/${g.picFileName}`}
+              alt={g.description}
+            />
+            <div className="card-body">
+              <ul>
+                <li>{g.description}</li>
+                <li>{g.destination}</li>
+                <li>{g.startDate}</li>
+                {/* <li><{g.endDate}</li> */}
+                <li>{g.price}</li>
+              </ul>
+            </div>
           </div>
         ))}
       </div>

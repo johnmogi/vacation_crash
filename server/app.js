@@ -10,7 +10,7 @@ const http = require("http");
 const socketIo = require("socket.io");
 const axios = require("axios");
 
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3004;
 const server = express();
 server.use(
   expressSession({
@@ -20,7 +20,6 @@ server.use(
     saveUninitialized: false
   })
 );
-
 server.use(cors());
 server.use(express.json());
 server.use("/api", vacsController);
